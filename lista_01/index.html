@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogo da Velha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Jogo da Velha</h1>
+  </header>
+  <div class="container">
+    <h2>Código Java - Jogo da Velha:</h2>
+    <pre>
+import java.util.Scanner;
+
+public class JogoDaVelha {
+
+    // Matriz que representa o tabuleiro do jogo
+    static char[][] tabuleiro = {
+        {' ', ' ', ' '},
+        {' ', ' ', ' '},
+        {' ', ' ', ' '}
+    };
+
+    // Função para exibir o tabuleiro
+    static void exibirTabuleiro() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(" " + tabuleiro[i][0] + " | " + tabuleiro[i][1] + " | " + tabuleiro[i][2]);
+            if (i < 2) {
+                System.out.println("---|---|---");
+            }
+        }
+    }
+
+    // Função para verificar se a jogada é válida
+    static boolean validacao(int linha, int coluna) {
+        return linha >= 0 && linha < 3 && coluna >= 0 && coluna < 3 && tabuleiro[linha][coluna] == ' ';
+    }
+
+    // Função para exibir mensagem de jogada inválida
+    static void restricao() {
+        System.out.println("Jogada inválida. Por favor, escolha uma posição vazia.");
+    }
+
+    // Função para verificar se houve empate
+    static boolean empate() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (tabuleiro[i][j] == ' ') {
+                    return false; // Ainda existem posições vazias
+                }
+            }
+        }
+        return true; // Todas as posições estão ocupadas, empate
+    }
+
+    // Função para verificar se há uma vitória
+    static boolean vitoria(char jogador) {
+        for (int i = 0; i < 3; i++) {
+            // Verificar linhas e colunas
+            if ((tabuleiro[i][0] == jogador && tabuleiro[i][1] == jogador && tabuleiro[i][2] == jogador) ||
+                (tabuleiro[0][i] == jogador && tabuleiro[1][i] == jogador && tabuleiro[2][i] == jogador)) {
+                return true;
+            }
+        }
+        // Verificar diagonais
+        return (tabuleiro[0][0] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][2] == jogador) ||
+                (tabuleiro[0][2] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][0] == jogador);
+    }
+
+    // Função para exibir mensagem de fim de jogo
+    static void exibirFim(char jogador) {
+        if (jogador == 'X') {
+            System.out.println("Jogador X venceu!");
+        } else if (jogador == 'O') {
+            System.out.println("Jogador O venceu!");
+        } else {
+            System.out.println("Empate! Deu velha.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char jogadorAtual = 'X';
+
+        while (true) {
+            exibirTabuleiro();
+            System.out.println("Vez do jogador " + jogadorAtual);
+            
+            // Leitura da jogada
+            System.out.print("Digite a linha (0 a 2): ");
+            int linha = scanner.nextInt();
+            System.out.print("Digite a coluna (0 a 2): ");
+            int coluna = scanner.nextInt();
+
+            // Verificação da jogada
+            if (validacao(linha, coluna)) {
+                tabuleiro[linha][coluna] = jogadorAtual;
+                
+                if (vitoria(jogadorAtual)) {
+                    exibirTabuleiro();
+                    exibirFim(jogadorAtual);
+                    break;
+                } else if (empate()) {
+                    exibirTabuleiro();
+                    exibirFim(' ');
+                    break;
+                }
+                
+                jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X'; // Troca de jogador
+            } else {
+                restricao();
+            }
+        }
+
+        scanner.close();
+    }
+}
+    </pre>
+  </div>
+</body>
+</html>
