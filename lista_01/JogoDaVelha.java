@@ -1,3 +1,4 @@
+package lista_01;
 import java.util.Scanner;
 
 public class JogoDaVelha {
