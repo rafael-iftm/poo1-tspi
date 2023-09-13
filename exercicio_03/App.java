@@ -48,7 +48,7 @@ public class App {
     private static Pessoa lePessoa() {
         System.out.print("Digite o nome da pessoa: ");
         String nome = scanner.next();
-        System.out.print("Digite o sexo da pessoa: ");
+        System.out.print("Digite o sexo da pessoa (H ou M): ");
         char sexo = scanner.next().charAt(0);
         System.out.print("Digite a idade da pessoa: ");
         int idade = scanner.nextInt();
