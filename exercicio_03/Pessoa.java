@@ -12,6 +12,9 @@ public class Pessoa {
     }
 
     public String exibe(){
-        return "Pessoa - Nome: %s Sexo: %c Idade: %d".formatted(nome, sexo, idade);
+        return """
+            Nome: %s
+            Sexo: %c
+            Idade: %d""".formatted(nome, sexo, idade);
     }
 }

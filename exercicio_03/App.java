@@ -28,7 +28,7 @@ public class App {
                 case 2:
                     formacao = leFormacao(); // Atribuir o resultado de leFormacao() a formacao
                     System.out.println("===================================================");
-                    System.out.println("Informações da Formacao:");
+                    System.out.println("Informações da formação:");
                     System.out.println(formacao.exibe());
                     System.out.println("===================================================");
                     break;

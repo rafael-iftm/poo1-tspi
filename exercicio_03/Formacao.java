@@ -13,6 +13,10 @@ public class Formacao {
     }
 
     public String exibe(){
-        return "Formacao - Nivel: %s Concluido: %b Instituicao: %s Ano: %d".formatted(nivel, concluido, instituicao, ano);
+        return """
+            Nivel: %s
+            Concluido: %b
+            Instituicao: %s
+            Ano: %d""".formatted(nivel, concluido, instituicao, ano);
     }
 }
