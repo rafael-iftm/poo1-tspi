@@ -19,16 +19,30 @@ public class App {
 
             switch (opcao) {
                 case 1:
-                    pessoa = lePessoa(); // Atribuir o resultado de lePessoa() a pessoa
-                    System.out.println("===================================================");
-                    System.out.println("Informações da pessoa:");
-                    System.out.println(pessoa.exibe());
-                    System.out.println("===================================================");
-                    break;
+                pessoa = lePessoa(); // Atribuir o resultado de lePessoa() a pessoa
+                System.out.println("===================================================");
+                System.out.println("Informações da pessoa:");
+                System.out.println(pessoa.exibe());
+                System.out.println("===================================================");
+                break;
                 case 2:
                     formacao = leFormacao(); // Atribuir o resultado de leFormacao() a formacao
                     System.out.println("===================================================");
                     System.out.println("Informações da formação:");
+                    System.out.println(formacao.exibe());
+                    System.out.println("===================================================");
+                    // Perguntar se a pessoa concluiu o curso no ano seguinte
+                    System.out.print("A pessoa concluiu o curso no ano seguinte? (true ou false): ");
+                    boolean concluiuNoAnoSeguinte = scanner.nextBoolean();
+                
+                    // Atualizar os dados da formação
+                    if (concluiuNoAnoSeguinte) {
+                        int novoAno = formacao.getAno() + 1;
+                        formacao.atualizarStatusConclusao(novoAno);
+                    }
+
+                    System.out.println("===================================================");
+                    System.out.println("Informações da formação atualizadas:");
                     System.out.println(formacao.exibe());
                     System.out.println("===================================================");
                     break;
