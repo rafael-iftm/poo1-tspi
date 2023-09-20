@@ -14,8 +14,14 @@ public class Cilindro {
     public double calculaVolume(double areaCirculo) {
         return (areaCirculo * altura);
     }
-
-    public String exibe(double raio) {
-        return "Cilindro - Raio: %f Altura: %f".formatted(raio, altura);
-    }    
+    
+    public String exibe(double raio, double areaCirculo) {
+        return """
+            [Cilindro]
+            Raio: %f
+            Altura: %f
+            Área: %f
+            Volume: %f
+            """.formatted(raio, altura, calculaArea(raio, areaCirculo), calculaVolume(areaCirculo));
+    }
 }

@@ -18,10 +18,10 @@ public class Circulo {
         return (2 * Math.PI * raio);
     }
 
-    public String exibe() {
+    public String exibe(double raio, double areaCirculo) {
         return """
             Centro = (%f, %f)
-            Círculo - Raio: %f
+            Raio: %f
             Área: %f
             Comprimento: %f
             """.formatted(Xc, Yc, raio, calculaArea(), calculaComprimento());
