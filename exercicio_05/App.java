@@ -56,11 +56,11 @@ public class App {
         Dados dadosInteiros = new Dados(a, b);
 
         // Passo 2: Somar os números inteiros usando a classe Adicao
-        Adicao adicao = new Adicao();
-        int somaInteiros = adicao.addInt(dadosInteiros.getA(), dadosInteiros.getB());
+        Adicao2 adicao = new Adicao2();
+        int somaInteiros = adicao.add(dadosInteiros.getA(), dadosInteiros.getB());
 
         // Passo 3: Exibir o resultado da soma
-        String resultadoInteiros = adicao.exibeInt(a, b, somaInteiros);
+        String resultadoInteiros = adicao.exibe(a, b, somaInteiros);
         System.out.println("\nResultado da Soma (Números Inteiros):");
         System.out.println(resultadoInteiros);
     }
@@ -76,11 +76,11 @@ public class App {
         Dados dadosReais = new Dados(c, d);
 
         // Passo 2: Somar os números reais usando a classe Adicao
-        Adicao adicao = new Adicao();
-        float somaReais = adicao.addFloat(dadosReais.getC(), dadosReais.getD());
+        Adicao2 adicao = new Adicao2();
+        float somaReais = adicao.add(dadosReais.getC(), dadosReais.getD());
 
         // Passo 3: Exibir o resultado da soma
-        String resultadoReais = adicao.exibeFloat(c, d, somaReais);
+        String resultadoReais = adicao.exibe(c, d, somaReais);
         System.out.println("\nResultado da Soma (Números Reais):");
         System.out.println(resultadoReais);
     }
