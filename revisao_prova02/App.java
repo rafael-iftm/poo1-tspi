@@ -1,11 +1,27 @@
 package revisao_prova02;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Cliente cliente = new Cliente("Rafael", "021.029.306-37");
         Conta conta = new Conta(1, cliente, 1000.0f);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite sua senha: ");
+        String senha = scanner.nextLine();
+
+        try {
+            if (autenticar(cliente, senha)) {
+                System.out.println("Autenticação bem-sucedida!");
+            } else {
+                throw new Restricoes("Senha não autorizada");
+            }
+        } catch (Restricoes e) {
+            System.out.println("Erro de autenticação: " + e.getMessage());
+            return;
+        }
 
         Transacao transacoes = new Transacao();
 
@@ -28,8 +44,7 @@ public class App {
             System.out.println("Valor: " + movimento.getValor());
             if (movimento.getOperacao() == Movimento.DEPOSITAR) {
                 System.out.println("Operação: Depósito");
-            }
-            else {
+            } else {
                 System.out.println("Operação: Saque");
             }
             System.out.println("------------------------");
@@ -37,5 +52,13 @@ public class App {
 
         System.out.println("Saldo Final: " + conta.getSaldo());
     }
-}
 
+    private static boolean autenticar(Cliente cliente, String senha) {
+        String senhaCorrespondente = obterSenhaCorrespondente(cliente.getCpf());
+        return senhaCorrespondente != null && senhaCorrespondente.equals(senha);
+    }
+
+    private static String obterSenhaCorrespondente(String cpf) {
+        return "123";
+    }
+}
