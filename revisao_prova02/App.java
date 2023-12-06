@@ -12,6 +12,8 @@ public class App {
         System.out.print("Digite sua senha: ");
         String senha = scanner.nextLine();
 
+        scanner.close();
+
         try {
             if (autenticar(cliente, senha)) {
                 System.out.println("Autenticação bem-sucedida!");
